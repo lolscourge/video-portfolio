@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harry Wade | Team Jesser</title>
+  <title>Harry Wade | MattHDGamer</title>
   <script type="module" src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@latest/src/lite-yt-embed.css" />
   <link rel="stylesheet" href="../style.css" />
@@ -15,44 +15,46 @@
       <a href="../index.html">Work</a>
       <a href="contact.html">Contact</a>
     </div>
-    <div class="logo">Harry Wade | Video Editor | Motion Design | Sound Design | Animation</div>
+    <div class="logo-wrapper">
+      <div class="logo">Harry Wade | Video Editor | Motion Design | Sound Design | Animation</div>
+    </div>
   </header>
 
   <main>
     <h1><a href="../index.html">Work</a> > MattHDGamer</h1>
 
-    <div class="video-grid">
-      <div class="video-wrapper">
+    <div class="grid">
+      <div class="grid-item">
         <lite-youtube 
           videoid="AgGcXp2MYvk" 
           playlabel="Play: Level 1 to 100 EXTREME Basketball Challenges!">
         </lite-youtube>
       </div>
-      <div class="video-wrapper">
+      <div class="grid-item">
         <lite-youtube 
           videoid="F7AvB3EfJ_A" 
           playlabel="Play: If You Clean It, You Keep It">
         </lite-youtube>
       </div>
-      <div class="video-wrapper">
+      <div class="grid-item">
         <lite-youtube 
           videoid="ApRv1X7TWwk" 
           playlabel="Play: I Bought YouTuber Mystery Boxes from Every Store!">
         </lite-youtube>
       </div>
-      <div class="video-wrapper">
+      <div class="grid-item">
         <lite-youtube 
           videoid="4jZQwRGolOg" 
           playlabel="Play: I Tested 1-Star Amazon Products!">
         </lite-youtube>
       </div>
-      <div class="video-wrapper">
+      <div class="grid-item">
         <lite-youtube 
           videoid="l19jkZ_xx3Q" 
           playlabel="Play: I Recreated VIRAL TikToks!">
         </lite-youtube>
       </div>
-      <div class="video-wrapper">
+      <div class="grid-item">
         <lite-youtube 
           videoid="CGEBTjjO10g" 
           playlabel="Play: Don't Miss The World's EASIEST Trickshot!">
@@ -60,24 +62,6 @@
       </div>
     </div>
   </main>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const wrappers = document.querySelectorAll('.video-wrapper');
-
-      wrappers.forEach(wrapper => {
-        const liteYT = wrapper.querySelector('lite-youtube');
-        
-        // The lite-youtube component loads the iframe internally,
-        // so we listen for the iframe load event inside the shadow DOM.
-        // Since this isn't trivial, fallback to setting loaded after a delay.
-        
-        setTimeout(() => {
-          wrapper.classList.add('loaded');
-        }, 1000);
-      });
-    });
-  </script>
 
 </body>
 </html>

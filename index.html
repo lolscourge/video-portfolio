@@ -5,230 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Harry Wade | Video Editor</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    @font-face {
-      font-family: 'Bebas Kai';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Bebas Kai'), url('https://fonts.cdnfonts.com/s/14605/BebasKai-Regular.woff') format('woff');
-    }
-
-    a {
-      text-decoration: none;
-      color: #282828;
-    }
-
-    a:hover {
-      text-decoration:wavy;
-    }
-
-    html {
-      overflow-y: scroll;
-    }
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Bebas Kai', sans-serif;
-      background-color: #7d5ef4;
-      color: #282828;
-      overflow-x: hidden;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Bebas Kai', sans-serif;
-      background-color: #7d5ef4;
-      color: #282828;
-      font-style: normal;
-      font-weight: normal;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background-color: #7d5ef4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 50px 8%;
-      font-size: 16px;
-      text-transform: uppercase;
-      z-index: 1000;
-      position: relative;
-    }
-
-    .nav-left {
-      position: absolute;
-      left: 8%;
-      display: flex;
-      gap: 15px;
-    }
-
-    header a {
-      text-decoration: none;
-      color: #282828;
-    }
-
-    .logo {
-      font-size: 24px;
-      text-align: center;
-    }
-
-    .buffer {
-      height: 30px;
-    }
-
-    main {
-      max-width: 1500px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px 30px;
-    }
-
-    .grid-item {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .grid-item .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .grid-item:hover .overlay {
-      opacity: 1;
-    }
-
-    .grid-item .overlay h2,
-    .grid-item .overlay p {
-      margin: 0;
-      color: white;
-      text-align: center;
-      font-family: 'Bebas Kai', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .grid img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 16 / 9;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px 30px;
-    }
-
-    .video-wrapper {
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-    }
-
-    .video-wrapper lite-youtube {
-      aspect-ratio: 16 / 9;
-      display: block;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .video-wrapper.loaded {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .contact-container {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 0 8%;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    input, textarea {
-      background-color: #2e2e2e;
-      color: #ffffff;
-      border: none;
-      padding: 12px;
-      margin-bottom: 20px;
-      font-family: 'Bebas Kai', sans-serif;
-      font-size: 14px;
-      width: 100%;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 120px;
-    }
-
-    button {
-      align-self: flex-start;
-      padding: 8px 20px;
-      font-size: 14px;
-      background-color: white;
-      color: #282828;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    button:hover {
-      background-color: #dddddd;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .logo {
-        text-align: left;
-        margin-top: 10px;
-      }
-      .video-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -237,108 +13,142 @@
         <a href="index.html">Work</a>
         <a href="pages/contact.html">Contact</a>
     </div>
-    <div class="logo">Harry Wade | Video Editor | Motion Design | Sound Design | Animation</div>
+    <div class="logo-wrapper">
+      <div class="logo">Harry Wade | Video Editor | Motion Design | Sound Design | Animation</div>
+    </div>
   </header>
 
+  <div class="buffer"></div>
+
   <main>
+    <h1><a href="../index.html">Work</a></h1>
 
-  <h1>Work</h1>
+    <div class="grid">
+      <div class="grid-item">
+        <a href="pages\teamjesser.html">
+          <img src="images\team-jesser-grid-image.png" alt="Team Jesser" />
+          <div class="overlay">
+            <h2>Team Jesser</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\fall damage.html">
+          <img src="images\fall-damage-grid-image.png" alt="Fall Damage" />
+          <div class="overlay">
+            <h2>Fall Damage</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\betway.html">
+          <img src="images\betwayxnip-grid-image.png" alt="Betway" />
+          <div class="overlay">
+            <h2>Betway x NiP</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\noahj456.html">
+          <img src="images\noahj-grid-image.jpg" alt="NoahJ456" />
+          <div class="overlay">
+            <h2>NoahJ456</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\toucan.html">
+          <img src="images\toucan-grid-image.png" alt="Toucan" />
+          <div class="overlay">
+            <h2>Toucan</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\dexerto.html">
+          <img src="images\dexerto-grid-image.jpeg" alt="Dexerto" />
+          <div class="overlay">
+            <h2>Dexerto</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\the jungle.html">
+          <img src="images\the-jungle-grid-image.png" alt="The Jungle" />
+          <div class="overlay">
+            <h2>The Jungle</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\reversesweep.html">
+          <img src="images\reverse-sweep-grid-image.png" alt="Reverse Sweep" />
+          <div class="overlay">
+            <h2>Reverse Sweep</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\matthdgamer.html">
+          <img src="images\matthdgamer-grid-image.png" alt="MattHDGamer" />
+          <div class="overlay">
+            <h2>MattHDGamer</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="pages\clickbaited.html">
+          <img src="images\clickbaited.jpg" alt="Clickbaited" />
+          <div class="overlay">
+            <h2>Clickbaited</h2>
+            <p>2025</p>
+          </div>
+        </a>
+      </div>
+    </div>
 
-<div class="grid">
-  <div class="grid-item">
-    <a href="pages\teamjesser.html">
-      <img src="images\team-jesser-grid-image.png" alt="Team Jesser" />
-      <div class="overlay">
-        <h2>Team Jesser</h2>
-        <p>2025</p>
+    <section class="cta">
+      <div class="cta-inner">
+        <button id="cta-button" class="cta-btn">Let's Make Something!</button>
       </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\fall damage.html">
-      <img src="images\fall-damage-grid-image.png" alt="Fall Damage" />
-      <div class="overlay">
-        <h2>Fall Damage</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\betway.html">
-      <img src="images\betwayxnip-grid-image.png" alt="Betway" />
-      <div class="overlay">
-        <h2>Betway x NiP</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\noahj456.html">
-      <img src="images\noahj-grid-image.jpg" alt="NoahJ456" />
-      <div class="overlay">
-        <h2>NoahJ456</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\toucan.html">
-      <img src="images\toucan-grid-image.png" alt="Toucan" />
-      <div class="overlay">
-        <h2>Toucan</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\dexerto.html">
-      <img src="images\dexerto-grid-image.jpeg" alt="Dexerto" />
-      <div class="overlay">
-        <h2>Dexerto</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\the jungle.html">
-      <img src="images\the-jungle-grid-image.png" alt="The Jungle" />
-      <div class="overlay">
-        <h2>The Jungle</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\reversesweep.html">
-      <img src="images\reverse-sweep-grid-image.png" alt="Reverse Sweep" />
-      <div class="overlay">
-        <h2>Reverse Sweep</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\matthdgamer.html">
-      <img src="images\matthdgamer-grid-image.png" alt="MattHDGamer" />
-      <div class="overlay">
-        <h2>MattHDGamer</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-  <div class="grid-item">
-    <a href="pages\clickbaited.html">
-      <img src="images\clickbaited.jpg" alt="Clickbaited" />
-      <div class="overlay">
-        <h2>Clickbaited</h2>
-        <p>2025</p>
-      </div>
-    </a>
-  </div>
-</div>
-
-
+    </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script>
+    const ctaButton = document.getElementById('cta-button');
+    if (ctaButton) {
+      ctaButton.addEventListener('click', () => {
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1001 };
+
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function() {
+          const timeLeft = animationEnd - Date.now();
+          if (timeLeft <= 0) return clearInterval(interval);
+          const particleCount = 50 * (timeLeft / duration);
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        }, 250);
+
+        setTimeout(() => {
+          window.location.href = 'pages/contact.html';
+        }, 1500);
+      });
+    }
+  </script>
 </body>
 </html>
