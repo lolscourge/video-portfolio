@@ -4,105 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Harry Wade | Team Jesser</title>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.1/src/lite-yt-embed.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.1/src/lite-yt-embed.css" />
-  <style>
-@font-face {
-  font-family: 'Bebas Kai';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Bebas Kai'), url('https://fonts.cdnfonts.com/s/14605/BebasKai-Regular.woff') format('woff');
-}
-
-a {
-  text-decoration: none;
-  color: #282828;
-}
-
-a:hover {
-  text-decoration:wavy;
-}
-
-html {
-  overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  margin: 0;
-  font-family: 'Bebas Kai', sans-serif;
-  background-color: #7d5ef4;
-  color: #282828;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  background-color: #7d5ef4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 8%;
-  font-size: 16px;
-  text-transform: uppercase;
-  z-index: 1000;
-}
-
-.nav-left {
-  position: absolute;
-  left: 8%;
-  display: flex;
-  gap: 15px;
-}
-
-header a {
-  text-decoration: none;
-  color: #282828;
-}
-
-.logo {
-  font-size: 24px;
-  text-align: center;
-}
-
-main {
-  max-width: 1500px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 30px;
-}
-
-.video-wrapper {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.video-wrapper lite-youtube {
-  aspect-ratio: 16 / 9;
-  display: block;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.video-wrapper.loaded { 
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-  </style>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@latest/src/lite-yt-embed.css" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
 
@@ -169,24 +73,6 @@ main {
 
     </div>
   </main>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const wrappers = document.querySelectorAll('.video-wrapper');
-
-      wrappers.forEach(wrapper => {
-        const liteYT = wrapper.querySelector('lite-youtube');
-        
-        // The lite-youtube component loads the iframe internally,
-        // so we listen for the iframe load event inside the shadow DOM.
-        // Since this isn't trivial, fallback to setting loaded after a delay.
-        
-        setTimeout(() => {
-          wrapper.classList.add('loaded');
-        }, 1000);
-      });
-    });
-  </script>
 
 </body>
 </html>
