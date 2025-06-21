@@ -285,6 +285,11 @@ main .grid .grid-item.grid-item-short {
   aspect-ratio: 1 / 1;
 }
 
+/* Ensure recommendations section uses regular aspect ratio even on square pages */
+.square-grid-page .recommendations-section .grid-item {
+  aspect-ratio: 16 / 9;
+}
+
 /* 5. CONTACT PAGE */
 .contact-container {
   max-width: 600px;
