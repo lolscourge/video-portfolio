@@ -15,10 +15,17 @@ html, body {
   font-style: normal;
   font-weight: normal;
   overflow-x: hidden;
+  /* Mobile performance improvements */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   overflow-y: scroll;
+  /* Mobile smooth scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
@@ -28,6 +35,12 @@ html {
 a {
   text-decoration: none;
   color: #e0e0e0;
+  /* Touch-friendly improvements */
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a:hover {
@@ -125,12 +138,29 @@ main {
   background-color: #2a2a2a;
   transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s, border-color 0.3s ease-in-out;
   max-width: 560px;
+  /* Touch-friendly improvements */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .grid-item:hover {
   transform: translateY(-8px) scale(1.03) rotate(-1deg);
   box-shadow: 0 12px 32px rgba(0,0,0,0.18);
   border-color: #FFD700;
+}
+
+/* Touch-friendly hover alternative for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .grid-item:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #444;
+  }
+  
+  .grid-item:active {
+    transform: translateY(-2px) scale(1.01);
+    border-color: #FFD700;
+  }
 }
 
 .grid-item .overlay {
@@ -270,6 +300,9 @@ form {
 label {
   margin-bottom: 4px;
   font-size: 14px;
+  /* Mobile-friendly label improvements */
+  display: block;
+  font-weight: bold;
 }
 
 input, textarea {
@@ -283,11 +316,16 @@ input, textarea {
   font-size: 14px;
   width: 100%;
   box-sizing: border-box;
+  /* Mobile-friendly input improvements */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 textarea {
   resize: vertical;
   height: 120px;
+  /* Mobile-friendly textarea improvements */
+  min-height: 100px;
 }
 
 form button[type="submit"] {
@@ -301,6 +339,10 @@ form button[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  /* Mobile-friendly button improvements */
+  min-height: 44px;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 form button[type="submit"]:hover {
@@ -323,6 +365,37 @@ form button[type="submit"]:hover {
   font-size: 16px;
 }
 
+/* Mobile-friendly form improvements */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  input, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+  }
+  
+  textarea {
+    min-height: 120px;
+  }
+  
+  form button[type="submit"] {
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+}
+
 /* 6. LITE YOUTUBE EMBED OVERRIDES */
 lite-youtube > .lty-playbtn {
     display: block;
@@ -338,6 +411,9 @@ lite-youtube > .lty-playbtn {
     border: 0;
     transition: transform 0.5s cubic-bezier(.4,0,.1,1);
     transform: scale(1);
+    /* Touch-friendly improvements */
+    min-height: 44px;
+    min-width: 44px;
 }
 
 lite-youtube:hover > .lty-playbtn,
@@ -354,25 +430,220 @@ lite-youtube[data-title]:hover > .lty-playbtn {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');
 }
 
+/* Mobile-specific YouTube embed improvements */
+@media (max-width: 768px) {
+  lite-youtube > .lty-playbtn {
+    background-size: 48px 34px; /* Smaller play button on mobile */
+  }
+  
+  /* Ensure YouTube embeds are responsive */
+  main .grid .grid-item lite-youtube {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+  
+  main .grid .grid-item iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Mobile-friendly navigation improvements */
+  .nav-left a {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-left a:hover,
+  .nav-left a:active {
+    background-color: rgba(255, 215, 0, 0.1);
+  }
+  
+  /* Ensure logo text is readable on mobile */
+  .logo {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 /* 7. RESPONSIVE STYLES */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 15px;
+    gap: 15px;
   }
+  
   .nav-left {
     position: static;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    gap: 20px;
   }
+  
   .logo {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.3;
+    text-align: center;
   }
+  
   .grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 10px;
   }
+  
+  .grid-item {
+    max-width: none;
+    border-width: 2px;
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+  
   h1 {
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+    margin: 20px 0;
+    padding: 0 15px;
+  }
+  
+  main {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+  
+  .category-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .recommendations-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .two-row-layout .grid-landscape {
+    grid-template-columns: 1fr;
+  }
+  
+  .two-row-layout .grid-shorts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contact-container {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+  
+  input, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 15px;
+  }
+  
+  form button[type="submit"] {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+}
+
+/* Additional mobile breakpoint for very small screens */
+@media (max-width: 480px) {
+  header {
+    padding: 15px 10px;
+  }
+  
+  .logo {
+    font-size: 14px;
+  }
+  
+  .nav-left {
+    gap: 15px;
+  }
+  
+  .grid {
+    gap: 12px;
+    padding: 0 5px;
+  }
+  
+  .grid-item {
+    border-width: 1px;
+  }
+  
+  h1 {
+    font-size: 18px;
+    padding: 0 10px;
+  }
+  
+  main {
+    padding: 0 5px;
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+  }
+  
+  .recommendations-title {
+    font-size: 1.5rem;
+  }
+  
+  .two-row-layout .grid-shorts {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-container {
+    padding: 0 10px;
+  }
+  
+  input, textarea {
+    padding: 12px;
+  }
+}
+
+/* Tablet breakpoint for better tablet experience */
+@media (min-width: 769px) and (max-width: 1024px) {
+  header {
+    padding: 30px 5%;
+  }
+  
+  .nav-left {
+    left: 5%;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .recommendations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .two-row-layout .grid-landscape {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .two-row-layout .grid-shorts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  main {
+    padding: 0 15px;
   }
 }
 
