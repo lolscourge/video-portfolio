@@ -1,0 +1,19 @@
+# Jekyll configuration for GitHub Pages
+permalink: pretty
+markdown: kramdown
+highlighter: rouge
+
+# Site settings
+title: Harry Wade | Video Editor
+description: Video Editor | Motion Design | Sound Design | Animation
+url: "https://harrydw.com"
+
+# Build settings
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .gitignore 
