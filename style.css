@@ -1,32 +1,9 @@
+/* 1. GLOBAL STYLES */
 @font-face {
   font-family: 'Bebas Kai';
   font-style: normal;
   font-weight: 400;
   src: local('Bebas Kai'), url('https://fonts.cdnfonts.com/s/14605/BebasKai-Regular.woff') format('woff');
-}
-
-a {
-  text-decoration: none;
-  color: #e0e0e0;
-}
-
-a:hover {
-  color: #FFD700;
-}
-
-html {
-  overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  margin: 0;
-  font-family: 'Bebas Kai', sans-serif;
-  color: #282828;
-  overflow-x: hidden;
 }
 
 html, body {
@@ -40,6 +17,38 @@ html, body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #e0e0e0;
+}
+
+a:hover {
+  color: #FFD700;
+}
+
+h1, h2 {
+  color: #ffffff;
+}
+
+h1 a:hover,
+h2:hover {
+  letter-spacing: 2px;
+  color: #FFD700;
+}
+
+.buffer {
+  height: 30px;
+}
+
+/* 2. LAYOUT & STRUCTURE */
 header {
   position: sticky;
   top: 0;
@@ -54,6 +63,11 @@ header {
   position: relative;
 }
 
+header a {
+  text-decoration: none;
+  color: #e0e0e0;
+}
+
 .nav-left {
   position: absolute;
   left: 8%;
@@ -66,26 +80,15 @@ header {
   color: #FFD700;
 }
 
-header a {
-  text-decoration: none;
-  color: #e0e0e0;
-}
-
-h1, h2 {
-  color: #ffffff;
-}
-
-h1 a:hover {
-  color: #FFD700;
-}
-
 .logo {
   font-size: 24px;
   text-align: center;
 }
 
-.buffer {
-  height: 30px;
+.logo-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
 main {
@@ -94,34 +97,24 @@ main {
   padding: 0 20px;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 0.8s cubic-bezier(.4,0,.2,1) 0.2s forwards;
+  /* Animation will be controlled by JavaScript after videos load */
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
+/* 3. GRID SYSTEM */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 20px 30px;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-/* Make grid items on video pages 16:9 and fill with lite-youtube */
-main .grid .grid-item {
-  aspect-ratio: 16 / 9;
-  display: flex;
-  align-items: stretch;
-  padding: 0;
-}
-
-main .grid .grid-item lite-youtube {
+.grid img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
 }
 
 .grid-item {
@@ -131,6 +124,7 @@ main .grid .grid-item lite-youtube {
   border: 3px solid #444;
   background-color: #2a2a2a;
   transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s, border-color 0.3s ease-in-out;
+  max-width: 560px;
 }
 
 .grid-item:hover {
@@ -164,43 +158,108 @@ main .grid .grid-item lite-youtube {
   color: #ffffff;
   text-align: center;
   font-family: 'Bebas Kai', sans-serif;
-  font-size: 2rem;
+  font-size: 1.2rem;
   letter-spacing: 1px;
 }
 
-.grid img {
+/* Specific styles for video pages grid */
+main .grid .grid-item {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+}
+
+main .grid .grid-item lite-youtube {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 16 / 9;
 }
 
-.video-grid {
-  display: grid;
+main .grid .grid-item iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Override for NoahJ page to be 1x1 */
+.square-grid-page main .grid-item {
+  aspect-ratio: 1 / 1;
+}
+
+/* Style for vertical YouTube Shorts */
+main .grid .grid-item.grid-item-short {
+  aspect-ratio: 9 / 16;
+}
+
+/* 4. PAGE-SPECIFIC GRIDS */
+
+/* Category Sections for Homepage */
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-title {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #FFD700;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.category-section .grid {
+  margin-bottom: 0;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid #444;
+}
+
+.recommendations-section h1 {
+  margin-bottom: 30px;
+}
+
+.recommendations-title {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.recommendations-grid {
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px 30px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.video-wrapper {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+/* Dexerto Page - Two Row Layout */
+.two-row-layout .grid-landscape {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 30px;
 }
 
-.video-wrapper.loaded {
-  opacity: 1;
-  transform: translateY(0);
+.two-row-layout .grid-shorts {
+  grid-template-columns: repeat(5, 1fr);
 }
 
+/* NoahJ Page - 1x1 Grid */
+.square-grid-page main .grid-item {
+  aspect-ratio: 1 / 1;
+}
+
+/* 5. CONTACT PAGE */
 .contact-container {
   max-width: 600px;
   margin: 60px auto;
   padding: 0 8%;
-}
-
-h2:hover {
-  letter-spacing: 2px;
-  color: #FFD700;
 }
 
 form {
@@ -223,6 +282,7 @@ input, textarea {
   font-family: 'Bebas Kai', sans-serif;
   font-size: 14px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 textarea {
@@ -230,7 +290,40 @@ textarea {
   height: 120px;
 }
 
-/* play button */
+form button[type="submit"] {
+  padding: 12px 20px;
+  font-family: 'Bebas Kai', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #FFD700;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #e6c200;
+}
+
+.form-status {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-status h3 {
+  color: #FFD700;
+  font-size: 22px;
+}
+
+.form-status p {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+/* 6. LITE YOUTUBE EMBED OVERRIDES */
 lite-youtube > .lty-playbtn {
     display: block;
     width: 100%;
@@ -250,137 +343,52 @@ lite-youtube > .lty-playbtn {
 lite-youtube:hover > .lty-playbtn,
 lite-youtube .lty-playbtn:focus {
     filter: none;
-    transform: scale(2);
+    transform: scale(1.1);
 }
 
-/* --- Main Fade-in Animation on Page Load --- */
-main {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s cubic-bezier(.4,0,.2,1) 0.2s forwards;
+lite-youtube[data-title] > .lty-playbtn {
+    background-image: none;
 }
 
+lite-youtube[data-title]:hover > .lty-playbtn {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');
+}
+
+/* 7. RESPONSIVE STYLES */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 20px 8%;
+    padding: 20px;
   }
-
   .nav-left {
     position: static;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
-
   .logo {
+    font-size: 18px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 24px;
     text-align: center;
   }
+}
 
-  .video-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+/* 8. KEYFRAME ANIMATIONS */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: none;
   }
-}
-
-form button[type="submit"] {
-  align-self: flex-start;
-  padding: 10px 28px;
-  font-size: 16px;
-  background-color: #FFD700;
-  color: #1e1e1e;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: 'Bebas Kai', sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-}
-
-form button[type="submit"]:hover {
-  background-color: #fff;
-  color: #1e1e1e;
-}
-
-.form-status {
-  display: none;
-  text-align: center;
-  padding: 40px 20px;
-}
-.form-status h3 {
-  font-size: 28px;
-  color: #282828;
-  margin-bottom: 10px;
-}
-.form-status p {
-  font-size: 18px;
-  color: #555;
-}
-
-/* --- Call to Action --- */
-.cta {
-  position: relative;
-  margin: 80px auto 40px;
-  padding: 4px;
-  max-width: 800px;
-  border-radius: 16px;
-  text-align: center;
-  overflow: hidden;
-  background: conic-gradient(
-    from 90deg,
-    #6495ED,
-    #7d5ef4,
-    #4169E1,
-    #20B2AA,
-    #6495ED
-  );
-  animation: rotate-gradient 4s linear infinite;
 }
 
 @keyframes rotate-gradient {
-  from {
-    background-position: 0% 50%;
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    background-position: 100% 50%;
+  100% {
+    transform: rotate(360deg);
   }
-}
-
-.cta-inner {
-  background: #1e1e1e;
-  padding: 40px 30px;
-  border-radius: 12px;
-}
-
-.cta h2 {
-  color: #FFD700;
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.cta p {
-  color: #e0e0e0;
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 25px auto;
-}
-
-.cta .cta-btn {
-  background: #FFD700;
-  color: #1e1e1e;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.2rem;
-  font-family: 'Bebas Kai', sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.cta .cta-btn:hover {
-  background: #fff;
-  transform: scale(1.05);
 } 
