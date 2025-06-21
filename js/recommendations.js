@@ -4,56 +4,56 @@ function addRecommendations() {
   const projects = [
     {
       title: 'Team Jesser',
-      image: '../../images/team-jesser-grid-image.png',
-      link: 'teamjesser/',
+      image: '/images/team-jesser-grid-image.png',
+      link: '/client/teamjesser/',
       tags: 'Youtuber • Challenge Content • Sports • 2025'
     },
     {
       title: 'Clickbaited',
-      image: '../../images/clickbaited.jpg',
-      link: 'clickbaited/',
+      image: '/images/clickbaited.jpg',
+      link: '/client/clickbaited/',
       tags: 'Editorial • Podcast • 2025'
     },
     {
       title: 'Fall Damage',
-      image: '../../images/fall-damage-grid-image.png',
-      link: 'fall damage/',
+      image: '/images/fall-damage-grid-image.png',
+      link: '/client/fall damage/',
       tags: 'Editorial • Commercial • Shorts • 2025'
     },
     {
       title: 'Dexerto',
-      image: '../../images/dexerto-grid-image.jpeg',
-      link: 'dexerto/',
+      image: '/images/dexerto-grid-image.jpeg',
+      link: '/client/dexerto/',
       tags: 'Commercial • Editorial • Shorts • 2025'
     },
     {
       title: 'Reverse Sweep',
-      image: '../../images/reverse-sweep-grid-image.png',
-      link: 'reversesweep/',
+      image: '/images/reverse-sweep-grid-image.png',
+      link: '/client/reversesweep/',
       tags: 'Editorial • Podcast • Shorts • 2024'
     },
     {
       title: 'The Jungle',
-      image: '../../images/the-jungle-grid-image.png',
-      link: 'the jungle/',
+      image: '/images/the-jungle-grid-image.png',
+      link: '/client/the jungle/',
       tags: 'Editorial • Podcast • 2023'
     },
     {
       title: 'NoahJ456',
-      image: '../../images/noahj-grid-image.jpg',
-      link: 'noahj456/',
+      image: '/images/noahj-grid-image.jpg',
+      link: '/client/noahj456/',
       tags: 'Social Media • Influencer • 2022'
     },
     {
       title: 'MattHDGamer',
-      image: '../../images/matthdgamer-grid-image.png',
-      link: 'matthdgamer/',
+      image: '/images/matthdgamer-grid-image.png',
+      link: '/client/matthdgamer/',
       tags: 'Social Media • Influencer • 2022'
     },
     {
       title: 'Betway x NiP',
-      image: '../../images/betwayxnip-grid-image.png',
-      link: 'betway/',
+      image: '/images/betwayxnip-grid-image.png',
+      link: '/client/betway/',
       tags: 'Commercial • Production • Hosting • Event • 2021'
     }
   ];
@@ -64,7 +64,7 @@ function addRecommendations() {
   
   // Filter out current page from recommendations
   const availableProjects = projects.filter(project => {
-    const projectPath = project.link.replace('/', '');
+    const projectPath = project.link.split('/').filter(segment => segment).pop();
     return projectPath !== currentPage;
   });
   
