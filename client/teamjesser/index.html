@@ -13,8 +13,8 @@
   <header>
     <div class="nav-left">
       <a href="../../">Work</a>
-      <a href="../cv/">CV</a>
-      <a href="../contact.html">Contact</a>
+      <a href="../../cv/">CV</a>
+      <a href="../contact/">Contact</a>
     </div>
     <div class="logo-wrapper">
       <div class="logo">Harry Wade | Video Editor | Motion Design | Sound Design | Animation</div>
@@ -64,26 +64,9 @@
     </div>
   </main>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const wrappers = document.querySelectorAll('.video-wrapper');
-
-      wrappers.forEach(wrapper => {
-        const liteYT = wrapper.querySelector('lite-youtube');
-        
-        // The lite-youtube component loads the iframe internally,
-        // so we listen for the iframe load event inside the shadow DOM.
-        // Since this isn't trivial, fallback to setting loaded after a delay.
-        
-        setTimeout(() => {
-          wrapper.classList.add('loaded');
-        }, 1000);
-      });
-    });
-  </script>
-
   <script src="../../js/fade-in.js"></script>
   <script src="../../js/recommendations.js"></script>
+  <script src="../../js/video-wrapper.js"></script>
 
 </body>
 </html>
