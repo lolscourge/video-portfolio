@@ -49,7 +49,7 @@ a:hover {
 }
 
 h1, h2 {
-  color: #ffffff;
+  color: #e0e0e0;
 }
 
 h1 a:hover,
@@ -63,8 +63,7 @@ h2:hover {
 
 /* 2. LAYOUT & STRUCTURE */
 header {
-  position: sticky;
-  top: 0;
+  position: relative;
   background-color: #1e1e1e;
   display: flex;
   justify-content: center;
@@ -72,8 +71,6 @@ header {
   padding: 50px 8%;
   font-size: 16px;
   text-transform: uppercase;
-  z-index: 1000;
-  position: relative;
 }
 
 header a {
@@ -94,7 +91,8 @@ header a {
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 26px;
+  line-height: 1.3;
   text-align: center;
 }
 
@@ -102,6 +100,58 @@ header a {
   flex-grow: 1;
   display: flex;
   justify-content: center;
+}
+
+/* Mobile Bottom Navigation */
+.mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  padding: 15px 20px;
+  z-index: 1001;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  transform: translateY(0%);
+}
+
+.mobile-nav.nav-hidden {
+  transform: translateY(300%);
+}
+
+.mobile-nav a {
+  flex: 1;
+  text-align: center;
+  padding: 12px 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #e0e0e0;
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:active {
+  color: #FFD700;
+  border-color: #FFD700;
+  transform: translateY(-1px);
+}
+
+.mobile-nav a:active {
+  transform: translateY(0);
 }
 
 main {
@@ -372,6 +422,10 @@ form button[type="submit"]:hover {
 
 /* Mobile-friendly form improvements */
 @media (max-width: 768px) {
+  .buffer {
+    height: 0;
+  }
+  
   .contact-container {
     padding: 0 15px;
     margin: 30px auto;
@@ -398,6 +452,10 @@ form button[type="submit"]:hover {
     font-size: 18px;
     border-radius: 6px;
     margin-top: 10px;
+  }
+  
+  .logo {
+    font-size: 32px;
   }
 }
 
@@ -483,7 +541,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 20px 15px;
+    padding: 20px 15px 10px;
     gap: 15px;
   }
   
@@ -491,12 +549,22 @@ lite-youtube[data-title]:hover > .lty-playbtn {
     position: static;
     margin-bottom: 0;
     gap: 20px;
+    display: none; /* Hide top navigation on mobile */
   }
   
   .logo {
-    font-size: 16px;
-    line-height: 1.3;
-    text-align: center;
+    font-size: 32px;
+  }
+  
+  /* Show mobile bottom navigation */
+  .mobile-nav {
+    display: flex;
+  }
+  
+  /* Add bottom padding to main content to account for fixed bottom nav */
+  main {
+    margin: 0 auto 20px;
+    padding: 0 10px 100px 10px; /* Added bottom padding */
   }
   
   .grid {
@@ -517,13 +585,8 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   h1 {
     font-size: 20px;
     text-align: center;
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 0 15px;
-  }
-  
-  main {
-    margin: 20px auto;
-    padding: 0 10px;
   }
   
   .category-title {
@@ -568,16 +631,30 @@ lite-youtube[data-title]:hover > .lty-playbtn {
 
 /* Additional mobile breakpoint for very small screens */
 @media (max-width: 480px) {
+  .buffer {
+    height: 0;
+  }
+  
   header {
-    padding: 15px 10px;
+    padding: 15px 10px 5px;
   }
   
   .logo {
-    font-size: 14px;
+    font-size: 24px;
   }
   
   .nav-left {
     gap: 15px;
+  }
+  
+  /* Adjust mobile nav for smaller screens */
+  .mobile-nav {
+    padding: 12px 15px;
+  }
+  
+  .mobile-nav a {
+    font-size: 13px;
+    padding: 10px 6px;
   }
   
   .grid {
@@ -591,11 +668,13 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   
   h1 {
     font-size: 18px;
+    margin: 15px 0;
     padding: 0 10px;
   }
   
   main {
-    padding: 0 5px;
+    margin-top: 0;
+    padding: 0 5px 90px 5px; /* Adjusted bottom padding for smaller screens */
   }
   
   .category-title {
@@ -669,6 +748,30 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   }
 }
 
+/* 9. FOOTER STYLES */
+footer {
+  background-color: #1e1e1e;
+  color: #888;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 14px;
+  position: relative;
+  z-index: 1000;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+}
+
 /* CV PAGE SPECIFIC STYLES */
 .cv-container {
   max-width: 1200px;
@@ -684,7 +787,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   text-align: center;
   margin-bottom: 40px;
   padding: 30px;
-  border-bottom: 3px solid #FFD700;
+  border-bottom: 1px solid #444;
   background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
   border-radius: 8px 8px 0 0;
 }
@@ -715,14 +818,14 @@ lite-youtube[data-title]:hover > .lty-playbtn {
 
 .cv-contact-info span {
   padding: 8px 15px;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
   border-radius: 20px;
   transition: all 0.3s ease;
 }
 
 .cv-contact-info span:hover {
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(255, 215, 0, 0.1);
   border-color: #FFD700;
   transform: translateY(-2px);
 }
@@ -742,7 +845,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   padding: 30px;
   background: #2a2a2a;
   border-radius: 8px;
-  border-left: 4px solid #FFD700;
+  border-left: 1px solid #444;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -751,7 +854,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   color: #FFD700;
   margin: 0 0 25px 0;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid #444;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -818,7 +921,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
 
 .cv-job-description li::before {
   content: "▸";
-  color: #FFD700;
+  color: #888;
   font-weight: bold;
   position: absolute;
   left: -15px;
@@ -850,7 +953,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   font-size: 1.2rem;
   margin: 0 0 15px 0;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid #444;
   letter-spacing: 1px;
 }
 
@@ -870,7 +973,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
 .cv-skill-list li:hover {
   color: #ffffff;
   padding-left: 5px;
-  background: rgba(255, 215, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .cv-skill-list li:last-child {
@@ -928,7 +1031,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   margin-bottom: 10px;
   background: #1e1e1e;
   border-radius: 6px;
-  border-left: 3px solid #FFD700;
+  border-left: 1px solid #444;
   color: #e0e0e0;
   line-height: 1.6;
   transition: all 0.3s ease;
@@ -949,7 +1052,7 @@ lite-youtube[data-title]:hover > .lty-playbtn {
   padding: 20px;
   margin-top: 40px;
   background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
-  border-top: 3px solid #FFD700;
+  border-top: 1px solid #444;
   border-radius: 0 0 8px 8px;
   color: #888;
   font-size: 0.9rem;
