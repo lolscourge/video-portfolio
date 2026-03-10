@@ -4,13 +4,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   wrappers.forEach(wrapper => {
     const liteYT = wrapper.querySelector('lite-youtube');
-    
-    // The lite-youtube component loads the iframe internally,
-    // so we listen for the iframe load event inside the shadow DOM.
-    // Since this isn't trivial, fallback to setting loaded after a delay.
-    
     setTimeout(() => {
       wrapper.classList.add('loaded');
     }, 1000);
   });
-}); 
+
+  // Click outside any playing lite-youtube to stop it
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('lite-youtube')) {
+      document.querySelectorAll('lite-youtube.lyt-activated').forEach(el => {
+        const iframe = el.querySelector('iframe');
+        if (iframe) iframe.remove();
+        el.classList.remove('lyt-activated');
+      });
+    }
+  });
+});
