@@ -33,6 +33,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     .lyt-close:hover { background: rgba(0, 0, 0, 0.9); }
     lite-youtube.lyt-activated .lyt-close { display: flex; }
+    lite-youtube.lyt-activated iframe { pointer-events: all; }
+    lite-youtube.lyt-activated .lty-playbtn { pointer-events: none; }
   `;
   document.head.appendChild(style);
 
