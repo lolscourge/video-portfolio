@@ -825,6 +825,8 @@ footer p {
   border: 1px solid #444;
   border-radius: 20px;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 .cv-contact-info span:hover {
